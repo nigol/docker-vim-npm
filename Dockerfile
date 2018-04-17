@@ -7,6 +7,8 @@ RUN apt-get clean && apt-get update && apt-get install -y locales
 RUN locale-gen cs_CZ.UTF-8
 ENV LANG cs_CZ.UTF-8
 
+ENV NODE_VERSION 9.11.1
+
 RUN (apt-get update && \
      DEBIAN_FRONTEND=noninteractive \
      apt-get install -y build-essential software-properties-common \
@@ -15,8 +17,10 @@ RUN (apt-get update && \
                         vim git byobu wget curl unzip tree exuberant-ctags \
                         build-essential cmake python python-dev gdb)
 
-RUN (curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
-    apt-get install -y nodejs)
+RUN (curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz && \
+    tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner" && \
+    rm "node-v$NODE_VERSION-linux-x64.tar.xz" && \
+    ln -s /usr/local/bin/node /usr/local/bin/nodejs)
 
 RUN (apt-get install -y npm)
 
