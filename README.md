@@ -15,7 +15,7 @@ After building, you can just pull the image and run it.
 
 ```
 $ docker run -it --name=vim-npm \
-             -p 8080:8080 \
+             -p 3000:3000 \
              vim-npm:latest \
              /sbin/my_init -- su - docker
 ```

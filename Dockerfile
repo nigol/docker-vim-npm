@@ -15,7 +15,7 @@ RUN (apt-get update && \
                         vim git byobu wget curl unzip tree exuberant-ctags \
                         build-essential cmake python python-dev gdb)
 
-RUN (apt-get install npm)
+RUN (apt-get install -y npm)
 
 RUN (apt-get install vim)
 
@@ -47,7 +47,6 @@ RUN (mkdir /home/docker/.ssh && \
     chmod 600 /home/docker/.ssh/id_rsa)
 
 USER root
-ADD service /etc/service
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD [“/bin/sh”]
