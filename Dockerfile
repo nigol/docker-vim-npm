@@ -49,4 +49,6 @@ RUN (mkdir /home/docker/.ssh && \
 USER root
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN (npm install -g create-react-app)
+
 CMD [“/bin/sh”]
