@@ -17,10 +17,6 @@ RUN (apt-get update && \
                         vim git byobu wget curl unzip tree exuberant-ctags \
                         build-essential cmake python python-dev gdb)
 
-RUN (curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz && \
-    tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner" && \
-    ln -s /usr/local/bin/nodejs /usr/local/bin/node)
-
 RUN (apt-get install -y npm)
 
 RUN (apt-get install vim)
@@ -56,5 +52,10 @@ USER root
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN (npm install -g create-react-app)
+RUN (wget https://nodejs.org/dist/v8.11.1/node-v8.11.1-linux-x64.tar.xz && \
+    tar -xvf node-v8.11.1-linux-x64.tar.xz &&
+    mv node-v8.11.1-linux-x64/* /usr/local/
+    rm node-v8.11.1-linux-x64.tar.xz && \
+    rm node-v8.11.1-linux-x64 -rf)
 
 CMD [“/bin/sh”]
