@@ -20,7 +20,7 @@ RUN (apt-get update && \
 RUN (curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz && \
     tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner" && \
     rm "node-v$NODE_VERSION-linux-x64.tar.xz" && \
-    ln -s /usr/local/bin/node /usr/local/bin/nodejs)
+    ln -s /usr/local/bin/nodejs /usr/local/bin/node)
 
 RUN (apt-get install -y npm)
 
