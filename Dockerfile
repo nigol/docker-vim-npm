@@ -53,9 +53,11 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN (npm install -g create-react-app)
 RUN (wget https://nodejs.org/dist/v8.11.1/node-v8.11.1-linux-x64.tar.xz && \
-    tar -xvf node-v8.11.1-linux-x64.tar.xz &&
-    mv node-v8.11.1-linux-x64/* /usr/local/
+    tar -xvf node-v8.11.1-linux-x64.tar.xz && \
+    cp -R node-v8.11.1-linux-x64/bin/* /usr/local/bin/ && \
+    cp -R node-v8.11.1-linux-x64/lib/* /usr/local/lib/ && \
+    cp -R node-v8.11.1-linux-x64/share/* /usr/local/share/ && \
     rm node-v8.11.1-linux-x64.tar.xz && \
     rm node-v8.11.1-linux-x64 -rf)
-
+    
 CMD [“/bin/sh”]
