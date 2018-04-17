@@ -15,8 +15,8 @@ RUN (apt-get update && \
                         vim git byobu wget curl unzip tree exuberant-ctags \
                         build-essential cmake python python-dev gdb)
 
-RUN (curl -sL https://deb.nodesource.com/setup_9.x | \
-    sudo -E bash -sudo apt-get install -y nodejs)
+RUN (curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
+    apt-get install -y nodejs)
 
 RUN (apt-get install -y npm)
 
