@@ -19,8 +19,6 @@ RUN (apt-get update && \
 
 RUN (apt-get install -y npm)
 
-RUN (apt-get install vim)
-
 # Add a non-root user
 RUN (useradd -m -d /home/docker -s /bin/bash docker && \
      echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers)
